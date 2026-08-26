@@ -60,7 +60,7 @@
 
   section.services { padding: 78px 0 30px; }
   h2 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 30px; }
-  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(235px, 1fr)); gap: 18px; }
   .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 28px 26px 30px; transition: transform .15s ease, box-shadow .15s ease; }
   .card:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(19,28,48,.08); }
   .glyph { width: 40px; height: 40px; border-radius: 10px; background: var(--ember-soft); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
@@ -166,6 +166,14 @@
         <p>The recurring work that eats your week, done by software: data pulls,
         reconciliation, scheduling, reporting. You approve; the system executes.</p>
         <span class="tag">Ongoing service</span>
+      </div>
+      <div class="card">
+        <div class="glyph"><svg viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg></div>
+        <b>Inventory optimization</b>
+        <p>Know what to stock before you order: reorder points, dead-stock flags,
+        and demand curves built from your own sales history &mdash; so cash stops
+        sitting on shelves.</p>
+        <span class="tag">Custom build</span>
       </div>
     </div>
   </div>
