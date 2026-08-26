@@ -5,57 +5,152 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fulcrum Consulting</title>
 <meta name="description" content="Fulcrum Consulting builds custom operational tools and recurring intelligence reports for small businesses and independent publishers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,480;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root { --ink: #1a2233; --sub: #55617a; --accent: #2f5fe0; --bg: #ffffff; --panel: #f5f7fb; }
+  :root {
+    --ink: #131c30; --ink-soft: #4c576f; --cream: #faf7f2; --card: #ffffff;
+    --ember: #c2571d; --ember-soft: #f4e3d7; --line: #e7e0d5;
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: Georgia, 'Times New Roman', serif; color: var(--ink); background: var(--bg); line-height: 1.65; }
-  header, main, footer { max-width: 720px; margin: 0 auto; padding: 0 24px; }
-  header { padding-top: 72px; padding-bottom: 8px; }
-  .mark { font-family: Helvetica, Arial, sans-serif; font-weight: 700; letter-spacing: 0.04em; font-size: 14px; text-transform: uppercase; color: var(--accent); }
-  h1 { font-size: 40px; line-height: 1.15; margin: 18px 0 14px; }
-  .lede { font-size: 19px; color: var(--sub); margin-bottom: 40px; }
-  h2 { font-family: Helvetica, Arial, sans-serif; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--sub); margin: 40px 0 14px; }
-  .svc { background: var(--panel); border-radius: 10px; padding: 20px 22px; margin-bottom: 14px; }
-  .svc b { display: block; font-size: 17px; margin-bottom: 4px; }
-  .svc p { color: var(--sub); font-size: 15.5px; }
-  .contact { margin: 44px 0 0; padding: 24px 0 60px; border-top: 1px solid #e3e8f2; }
-  .contact p { color: var(--sub); }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  footer { padding-bottom: 40px; color: #9aa4b8; font-size: 13px; font-family: Helvetica, Arial, sans-serif; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: var(--cream); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1020px; margin: 0 auto; padding: 0 28px; }
+
+  nav { position: sticky; top: 0; background: rgba(250,247,242,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); z-index: 10; }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .word { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 19px; letter-spacing: -0.01em; }
+  .word .dot { color: var(--ember); }
+  nav a.cta { font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; border: 1.5px solid var(--ink); border-radius: 999px; padding: 8px 18px; transition: all .15s ease; }
+  nav a.cta:hover { background: var(--ink); color: var(--cream); }
+
+  .hero { padding: 96px 0 72px; }
+  .kicker { font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ember); margin-bottom: 22px; }
+  h1 { font-family: 'Fraunces', Georgia, serif; font-weight: 480; font-size: clamp(38px, 5.6vw, 62px); line-height: 1.06; letter-spacing: -0.015em; max-width: 17ch; }
+  .hero p { margin-top: 26px; font-size: 18px; color: var(--ink-soft); max-width: 56ch; }
+  .hero .actions { margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn { display: inline-block; text-decoration: none; font-weight: 600; font-size: 15px; border-radius: 999px; padding: 13px 26px; transition: transform .12s ease, box-shadow .12s ease; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn.primary { background: var(--ink); color: var(--cream); box-shadow: 0 8px 22px rgba(19,28,48,.18); }
+  .btn.ghost { color: var(--ink); border: 1.5px solid var(--line); background: var(--card); }
+
+  .rule { height: 1px; background: var(--line); }
+
+  section.services { padding: 72px 0 24px; }
+  h2 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 15px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 30px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 28px 26px 30px; transition: transform .15s ease, box-shadow .15s ease; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(19,28,48,.08); }
+  .glyph { width: 40px; height: 40px; border-radius: 10px; background: var(--ember-soft); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+  .glyph svg { width: 20px; height: 20px; stroke: var(--ember); stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .card b { display: block; font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 19.5px; margin-bottom: 9px; letter-spacing: -0.01em; }
+  .card p { font-size: 15px; color: var(--ink-soft); }
+  .card .tag { display: inline-block; margin-top: 16px; font-size: 12.5px; font-weight: 600; color: var(--ember); }
+
+  .proof { margin: 72px 0; background: var(--ink); border-radius: 20px; color: #eef1f8; padding: 46px 48px; }
+  .proof h2 { color: #9aa7c4; margin-bottom: 22px; }
+  .proof p { font-family: 'Fraunces', Georgia, serif; font-weight: 480; font-size: clamp(21px, 2.6vw, 27px); line-height: 1.45; max-width: 34ch; letter-spacing: -0.01em; }
+  .proof p em { font-style: normal; color: #f0a875; }
+
+  .contact { padding: 24px 0 96px; }
+  .contact .inner { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .contact h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 480; font-size: clamp(26px, 3.4vw, 36px); letter-spacing: -0.01em; max-width: 20ch; }
+  .contact .sub { margin-top: 12px; color: var(--ink-soft); font-size: 16px; }
+  .contact a.mail { color: var(--ember); text-decoration: none; font-weight: 600; }
+  .contact a.mail:hover { text-decoration: underline; }
+
+  footer { border-top: 1px solid var(--line); padding: 26px 0 42px; color: #98917f; font-size: 13px; display: flex; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; width: 100%; }
+
+  @media (max-width: 780px) {
+    .grid { grid-template-columns: 1fr; }
+    .hero { padding: 68px 0 54px; }
+    .proof { padding: 36px 28px; }
+  }
 </style>
 </head>
 <body>
-<header>
-  <div class="mark">Fulcrum Consulting</div>
-  <h1>Operational tools and reporting, built for one business at a time.</h1>
-  <p class="lede">Fulcrum Consulting is an independent studio. We build the systems small
-  businesses run on: dashboards, automations, and recurring intelligence reports,
-  each one built around how you actually work.</p>
+<nav>
+  <div class="wrap">
+    <div class="word">Fulcrum<span class="dot">.</span></div>
+    <a class="cta" href="mailto:nickfisher518@gmail.com">Get in touch</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Fulcrum Consulting</div>
+    <h1>The numbers your business runs on, finally in one place.</h1>
+    <p>Fulcrum is an independent studio. We build the operational systems small
+    businesses actually run on: dashboards, automations, and recurring intelligence
+    reports, each one shaped around how you already work, not the other way around.</p>
+    <div class="actions">
+      <a class="btn primary" href="mailto:nickfisher518@gmail.com">Start a conversation</a>
+      <a class="btn ghost" href="#services">See what we build</a>
+    </div>
+  </div>
 </header>
-<main>
-  <h2>What we do</h2>
-  <div class="svc">
-    <b>Reader engagement reports for publishers</b>
-    <p>A monthly subscription report for email newsletter publishers: which of your
-    highest value readers are opening, who has gone quiet, and where deliverability
-    is silently failing. Delivered on the first of each month.</p>
+
+<div class="wrap"><div class="rule"></div></div>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <h2>What we build</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="glyph"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg></div>
+        <b>Reader engagement reports</b>
+        <p>A monthly report for email newsletter publishers: which of your highest
+        value readers open, who has gone quiet, and where deliverability is silently
+        failing. Named, scored, and delivered on the first of the month.</p>
+        <span class="tag">Monthly subscription</span>
+      </div>
+      <div class="card">
+        <div class="glyph"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20H2"/></svg></div>
+        <b>Operations dashboards</b>
+        <p>Production, payroll, routing, inventory, daily counts: one live view of
+        the numbers that decide your week, built on the systems you already use.</p>
+        <span class="tag">Custom build</span>
+      </div>
+      <div class="card">
+        <div class="glyph"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg></div>
+        <b>Workflow automation</b>
+        <p>The recurring work that eats your week, done by software: data pulls,
+        reconciliation, scheduling, reporting. You approve; the system executes.</p>
+        <span class="tag">Ongoing service</span>
+      </div>
+    </div>
   </div>
-  <div class="svc">
-    <b>Operations dashboards</b>
-    <p>One place to see the numbers your business runs on: production, payroll,
-    routes, inventory, daily counts. Built on the systems you already use.</p>
+</section>
+
+<div class="wrap">
+  <div class="proof">
+    <h2>In production today</h2>
+    <p>Our systems run <em>payroll, routing, and safety</em> for a 40 van delivery
+    fleet, <em>daily perishables counting</em> across a multi store bakery group,
+    and <em>VIP readership intelligence</em> for political media publishers.</p>
   </div>
-  <div class="svc">
-    <b>Workflow automation</b>
-    <p>The recurring work that eats your week, done by software: data pulls,
-    reconciliation, scheduling, reporting. You approve; the system executes.</p>
+</div>
+
+<section class="contact" id="contact">
+  <div class="wrap inner">
+    <div>
+      <h3>Bring us the job you dread every week.</h3>
+      <p class="sub">Tell us what it is. If we can automate it, we will show you
+      exactly what that looks like before you pay anything.</p>
+    </div>
+    <div>
+      <p class="sub">Nick Fisher<br><a class="mail" href="mailto:nickfisher518@gmail.com">nickfisher518@gmail.com</a></p>
+    </div>
   </div>
-  <div class="contact">
-    <h2>Contact</h2>
-    <p>Nick Fisher &middot; <a href="mailto:nickfisher518@gmail.com">nickfisher518@gmail.com</a></p>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Fulcrum Consulting</span>
+    <span>Ballston Spa, New York</span>
   </div>
-</main>
-<footer>&copy; 2026 Fulcrum Consulting</footer>
+</footer>
 </body>
 </html>
