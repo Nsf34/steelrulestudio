@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Steel Rule Studio</title>
-<meta name="description" content="Steel Rule Studio builds custom systems and automations for any business situation: hiring, counting, billing, scheduling, reporting. Software built to fit how you already work.">
+<meta name="description" content="Steel Rule Studio builds custom systems and automations for any business headache: hiring, counting, billing, scheduling, reporting. Software built to fit how you already work.">
 <link rel="canonical" href="https://steelrulestudio.com/">
 <meta property="og:title" content="Steel Rule Studio">
-<meta property="og:description" content="We build the tool your business is missing. Custom systems and automations, shaped around how you already operate.">
+<meta property="og:description" content="Bring us the job you dread every week. We build custom systems and automations, shaped around how you already operate.">
 <meta property="og:url" content="https://steelrulestudio.com/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
@@ -22,7 +22,8 @@
     --line: #e5ddd0; --good: #24704a; --bad: #a83a24;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-padding-top: 70px; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
   body { font-family: 'Inter', system-ui, sans-serif; background: var(--cream); color: var(--ink); line-height: 1.55; -webkit-font-smoothing: antialiased; }
   .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
 
@@ -38,9 +39,10 @@
   nav a.cta { color: var(--cream); background: var(--ink); border-radius: 999px; padding: 9px 20px; transition: transform .12s ease; }
   nav a.cta:hover { transform: translateY(-1px); }
 
-  .hero { padding: 58px 0 48px; }
+  .hero { padding: 56px 0 48px; }
   .hero .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-  .kicker { font-size: 12.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ember-text); margin-bottom: 16px; }
+  .kicker { font-size: 12.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ember-text); }
+  .named { font-size: 13px; color: var(--soft); margin: 4px 0 16px; }
   h1 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: clamp(34px, 4.2vw, 52px); line-height: 1.06; letter-spacing: -0.015em; }
   .hero p.lede { margin-top: 18px; font-size: 17px; color: var(--soft); max-width: 46ch; }
   .hero .actions { margin-top: 26px; display: flex; gap: 12px; flex-wrap: wrap; }
@@ -61,7 +63,6 @@
   .kpi b { display: block; font-size: 20px; font-family: 'Fraunces', Georgia, serif; font-weight: 600; letter-spacing: -0.01em; }
   .kpi span { font-size: 10.5px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--soft); }
   .kpi .good { color: var(--good); font-size: 11px; font-weight: 700; font-style: normal; }
-  .kpi .warn { color: var(--bad); font-size: 11px; font-weight: 700; font-style: normal; }
   .flags { padding: 4px 0 2px; }
   .flag { display: flex; gap: 10px; align-items: baseline; padding: 9px 18px; border-bottom: 1px solid #f4efe6; font-size: 13px; }
   .flag:last-child { border-bottom: none; }
@@ -79,13 +80,14 @@
   section.services { padding: 54px 0 8px; }
   h2 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--soft); margin-bottom: 16px; }
   .range { color: var(--soft); font-size: 15.5px; margin: -8px 0 22px; max-width: 62ch; }
+  .range b { color: var(--ink); }
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
   .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px 22px 20px; transition: transform .15s ease, box-shadow .15s ease; }
   .card:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(19,28,48,.09); }
   .card .head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
   .glyph { flex: none; width: 36px; height: 36px; border-radius: 9px; background: var(--ember-soft); display: flex; align-items: center; justify-content: center; }
   .glyph svg { width: 18px; height: 18px; stroke: var(--ember); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-  .card b.title { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 19px; letter-spacing: -0.01em; }
+  h3.title { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 19px; letter-spacing: -0.01em; }
   .card p { font-size: 14.5px; color: var(--ink); }
   .chips { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
   .chip { font-size: 12px; font-weight: 600; color: var(--soft); background: #f4f0e7; border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; }
@@ -94,21 +96,27 @@
   .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
   .step { border-left: 3px solid var(--ember); background: var(--card); border-radius: 0 12px 12px 0; padding: 16px 18px; }
   .step .n { font-family: 'Fraunces', Georgia, serif; font-weight: 700; color: var(--ember-text); font-size: 15px; }
-  .step b { display: block; font-size: 15.5px; margin: 2px 0 4px; }
+  h3.steptitle { font-size: 15.5px; margin: 2px 0 4px; font-family: 'Inter', system-ui, sans-serif; font-weight: 700; }
   .step p { font-size: 13.5px; color: var(--soft); }
   .midcta { margin-top: 18px; font-size: 15px; font-weight: 600; }
   .midcta a { color: var(--ember-text); }
+
+  .answers { padding: 44px 0 6px; }
+  .agrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+  .ans { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+  h3.anstitle { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 16px; margin-bottom: 4px; }
+  .ans p { font-size: 13.5px; color: var(--soft); }
 
   .proof { margin: 46px 0; background: var(--ink); border-radius: 18px; color: #eef1f8; padding: 38px 42px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 36px; align-items: center; }
   .proof h2 { color: #9aa7c4; margin-bottom: 14px; }
   .proof p.big { font-family: 'Fraunces', Georgia, serif; font-weight: 480; font-size: clamp(18px, 2.1vw, 24px); line-height: 1.5; letter-spacing: -0.01em; }
   .proof p.big em { font-style: normal; color: #f0a875; }
   .proof .how2 { border-left: 2px solid #2c3a58; padding-left: 20px; font-size: 14.5px; color: #c3cbde; }
-  .proof .how2 b { color: #eef1f8; display: block; margin-bottom: 5px; font-size: 15px; }
+  h3.whytitle { color: #eef1f8; margin-bottom: 5px; font-size: 15px; font-family: 'Inter', system-ui, sans-serif; font-weight: 700; }
 
   .contact { padding: 6px 0 64px; }
   .contact .inner { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 34px 38px; display: flex; align-items: center; justify-content: space-between; gap: 22px; flex-wrap: wrap; }
-  .contact h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: clamp(22px, 2.8vw, 30px); letter-spacing: -0.01em; max-width: 24ch; }
+  h2.contact-h { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: clamp(22px, 2.8vw, 30px); letter-spacing: -0.01em; max-width: 24ch; text-transform: none; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 0; }
   .contact .sub { margin-top: 8px; color: var(--soft); font-size: 15px; max-width: 52ch; }
   .contact .altmail { margin-top: 10px; font-size: 13.5px; color: var(--soft); }
   .contact .altmail a { color: var(--ember-text); font-weight: 600; }
@@ -141,7 +149,7 @@
     <div class="links">
       <a href="#work">Selected work</a>
       <a href="#process">Process</a>
-      <a class="cta" href="mailto:nickfisher518@gmail.com?subject=The%20job%20I%20dread&amp;body=The%20task%3A%0AHow%20often%20it%20eats%20my%20time%3A%0AWhat%20we%20use%20now%20(spreadsheets%2C%20paper%2C%20software)%3A">Get in touch</a>
+      <a class="cta" href="mailto:nickfisher518@gmail.com?subject=The%20job%20I%20dread&amp;body=The%20task%3A%0AHow%20often%20it%20eats%20my%20time%3A%0AWhat%20we%20use%20now%20(spreadsheets%2C%20paper%2C%20software)%3A">Email the studio</a>
     </div>
   </div>
 </nav>
@@ -150,16 +158,18 @@
   <div class="wrap">
     <div>
       <div class="kicker">Steel Rule Studio</div>
-      <h1>We build the tool your business is missing.</h1>
-      <p class="lede">Bring us any operational headache: hiring, counting, chasing,
-      checking, billing, scheduling. We build custom systems and automations that
-      take the grunt work off your people, shaped around how you already operate.
-      Not software you adapt to. Software built to fit.</p>
+      <p class="named">Named for the machinist's exact measure.</p>
+      <h1>Bring us the job you dread every week.</h1>
+      <p class="lede">We build systems that take the grunt work off your people:
+      hiring, counting, chasing, checking, billing, scheduling. Not software you
+      adapt to. Software built to fit.</p>
       <div class="actions">
-        <a class="btn primary" href="mailto:nickfisher518@gmail.com?subject=The%20job%20I%20dread&amp;body=The%20task%3A%0AHow%20often%20it%20eats%20my%20time%3A%0AWhat%20we%20use%20now%20(spreadsheets%2C%20paper%2C%20software)%3A">Start a conversation</a>
-        <a class="btn ghost" href="#work">See the work</a>
+        <a class="btn primary" href="mailto:nickfisher518@gmail.com?subject=The%20job%20I%20dread&amp;body=The%20task%3A%0AHow%20often%20it%20eats%20my%20time%3A%0AWhat%20we%20use%20now%20(spreadsheets%2C%20paper%2C%20software)%3A">Email the studio</a>
+        <a class="btn ghost" href="#work">Selected work</a>
       </div>
-      <p class="assure">You see it working on your real workflow before you pay anything.</p>
+      <p class="assure">You see it working on your real workflow before you pay
+      anything. Walking away costs nothing. Or write to nickfisher518@gmail.com,
+      two sentences is plenty.</p>
     </div>
     <div class="mock" aria-hidden="true">
       <div class="bar"><b>What a weekly report can watch</b><span>Monday 7:00 AM</span></div>
@@ -174,11 +184,12 @@
         <div class="flag"><span class="sev hi">FLAG</span><span>Thursday made <em>240 more units</em> than sold, next week's plan cut</span></div>
         <div class="flag"><span class="sev ok">DONE</span><span>6 quiet applicants followed up automatically, 2 replied</span></div>
       </div>
-      <div class="foot">One page, every Monday, on your systems. Sample data shown.</div>
+      <div class="foot">One page every Monday, built from your own numbers. Sample data shown.</div>
     </div>
   </div>
 </header>
 
+<main>
 <div class="strip">
   <div class="wrap">
     <div><b>Built on your systems</b><span>No rip and replace, ever</span></div>
@@ -191,12 +202,13 @@
 <section class="services" id="work">
   <div class="wrap">
     <h2>Selected work</h2>
-    <p class="range">Every engagement is built custom for one business. These show the range.</p>
+    <p class="range"><b>We build the tool your business is missing.</b> Every
+    engagement is custom for one business. These show the range.</p>
     <div class="grid">
       <div class="card">
         <div class="head">
-          <div class="glyph"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8l2 2-4 4-2-2"/></svg></div>
-          <b class="title">People operations</b>
+          <div class="glyph"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8l2 2-4 4-2-2"/></svg></div>
+          <h3 class="title">People operations</h3>
         </div>
         <p>Every applicant, one screen: advance, reject, and follow up without
         losing anyone.</p>
@@ -204,8 +216,8 @@
       </div>
       <div class="card">
         <div class="head">
-          <div class="glyph"><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></div>
-          <b class="title">Reconciliation</b>
+          <div class="glyph"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></div>
+          <h3 class="title">Reconciliation</h3>
         </div>
         <p>Your records, cross checked against each other until the story agrees,
         with the dollars attached.</p>
@@ -213,8 +225,8 @@
       </div>
       <div class="card">
         <div class="head">
-          <div class="glyph"><svg viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg></div>
-          <b class="title">Inventory and production</b>
+          <div class="glyph"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg></div>
+          <h3 class="title">Inventory and production</h3>
         </div>
         <p>Make and stock the right amount, planned from your own history instead
         of gut feel.</p>
@@ -222,8 +234,8 @@
       </div>
       <div class="card">
         <div class="head">
-          <div class="glyph"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg></div>
-          <b class="title">Audience intelligence</b>
+          <div class="glyph"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg></div>
+          <h3 class="title">Audience intelligence</h3>
         </div>
         <p>Who actually reads what you send, who went quiet, and what earns
         the click.</p>
@@ -235,16 +247,36 @@
 
 <section class="how" id="process">
   <div class="wrap">
-    <h2>How an engagement works</h2>
+    <h2>How a project runs</h2>
     <div class="steps">
-      <div class="step"><span class="n">01</span><b>Tell us the job you dread</b>
+      <div class="step"><span class="n">01</span><h3 class="steptitle">Tell us the job you dread</h3>
         <p>The weekly task that eats your time, or the number you can never quite trust.</p></div>
-      <div class="step"><span class="n">02</span><b>See it working first</b>
+      <div class="step"><span class="n">02</span><h3 class="steptitle">See it working first</h3>
         <p>We build the first cut on your real workflow and show it running before you pay anything.</p></div>
-      <div class="step"><span class="n">03</span><b>Flat monthly, keep or cancel</b>
-        <p>One subscription covers the system, the reports, and the changes as your business shifts. Cancel and your data goes with you.</p></div>
+      <div class="step"><span class="n">03</span><h3 class="steptitle">Flat monthly, keep or cancel</h3>
+        <p>One subscription covers the system, the reports, and the changes as your business shifts.</p></div>
     </div>
-    <p class="midcta">Have a job like this? <a href="mailto:nickfisher518@gmail.com?subject=The%20job%20I%20dread&amp;body=The%20task%3A%0AHow%20often%20it%20eats%20my%20time%3A%0AWhat%20we%20use%20now%20(spreadsheets%2C%20paper%2C%20software)%3A">Start a conversation</a>. Two sentences is plenty.</p>
+    <p class="midcta">Have a job like this? <a href="mailto:nickfisher518@gmail.com?subject=The%20job%20I%20dread&amp;body=The%20task%3A%0AHow%20often%20it%20eats%20my%20time%3A%0AWhat%20we%20use%20now%20(spreadsheets%2C%20paper%2C%20software)%3A">Email the studio</a>. Two sentences is plenty.</p>
+  </div>
+</section>
+
+<section class="answers">
+  <div class="wrap">
+    <h2>Straight answers</h2>
+    <div class="agrid">
+      <div class="ans"><h3 class="anstitle">Your data is yours</h3>
+        <p>Everything we build runs on your numbers, and they stay yours. Nothing
+        is ever shared across clients.</p></div>
+      <div class="ans"><h3 class="anstitle">Leaving is easy</h3>
+        <p>Cancel with one email. You get everything back in open formats you can
+        take anywhere.</p></div>
+      <div class="ans"><h3 class="anstitle">No lock in by design</h3>
+        <p>We build on the systems you already run, so walking away never means
+        starting over.</p></div>
+      <div class="ans"><h3 class="anstitle">Talk to a client</h3>
+        <p>Serious about working together? Ask, and we will connect you with a
+        current client.</p></div>
+    </div>
   </div>
 </section>
 
@@ -260,7 +292,7 @@
       tracking <em>more than a thousand named VIP readers</em>.</p>
     </div>
     <div class="how2">
-      <b>Why "Steel Rule"</b>
+      <h3 class="whytitle">Why "Steel Rule"</h3>
       A steel rule is the machinist's exact measure: the tool you check
       everything else against. That is the job here. Numbers you can build on.
     </div>
@@ -271,7 +303,7 @@
   <div class="wrap">
     <div class="inner">
       <div>
-        <h3>Bring us the job you dread every week.</h3>
+        <h2 class="contact-h">Bring us the job you dread every week.</h2>
         <p class="sub">You'll hear back within one business day with an honest read
         on whether there is a build worth doing. If there is not, we will say so.
         No calls unless you want one.</p>
@@ -284,6 +316,7 @@
     </div>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="wrap">
