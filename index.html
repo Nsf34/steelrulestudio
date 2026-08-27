@@ -4,91 +4,114 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Steel Rule Studio</title>
-<meta name="description" content="Steel Rule Studio builds custom operational tools and recurring intelligence reports for small businesses and independent publishers.">
+<meta name="description" content="Steel Rule Studio builds custom operational systems and recurring intelligence reports for small businesses: hiring pipelines, reconciliation, production planning, audience analytics.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%23131c30'/%3E%3Crect x='10' y='40' width='44' height='3' fill='%23faf7f2'/%3E%3Crect x='10' y='28' width='3' height='12' fill='%23faf7f2'/%3E%3Crect x='24' y='33' width='3' height='7' fill='%23faf7f2'/%3E%3Crect x='38' y='33' width='3' height='7' fill='%23c2571d'/%3E%3Crect x='51' y='28' width='3' height='12' fill='%23faf7f2'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,480;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,480;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #131c30; --ink-soft: #4c576f; --cream: #faf7f2; --card: #ffffff;
-    --ember: #c2571d; --ember-soft: #f4e3d7; --line: #e7e0d5; --good: #2f7d4f;
+    --ink: #131c30; --soft: #3d4860; --cream: #faf7f2; --card: #ffffff;
+    --ember: #c2571d; --ember-soft: #f6e4d6; --line: #e5ddd0; --good: #24704a; --bad: #a83a24;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', system-ui, sans-serif; background: var(--cream); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: var(--cream); color: var(--ink); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
 
-  nav { position: sticky; top: 0; background: rgba(250,247,242,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); z-index: 10; }
-  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 66px; }
-  .word { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 19px; letter-spacing: -0.01em; }
+  nav { position: sticky; top: 0; background: rgba(250,247,242,0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); z-index: 10; }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .word { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 20px; letter-spacing: -0.01em; position: relative; padding-bottom: 6px; }
   .word .dot { color: var(--ember); }
-  nav .links { display: flex; gap: 26px; align-items: center; }
-  nav .links a { font-size: 14.5px; font-weight: 500; color: var(--ink-soft); text-decoration: none; }
+  .word::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 2px;
+    background: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 12px); opacity: .55; }
+  nav .links { display: flex; gap: 24px; align-items: center; }
+  nav .links a { font-size: 14.5px; font-weight: 600; color: var(--soft); text-decoration: none; }
   nav .links a:hover { color: var(--ink); }
-  nav a.cta { font-size: 14px; font-weight: 600; color: var(--ink); border: 1.5px solid var(--ink); border-radius: 999px; padding: 8px 18px; transition: all .15s ease; }
-  nav a.cta:hover { background: var(--ink); color: var(--cream); }
+  nav a.cta { color: var(--cream); background: var(--ink); border-radius: 999px; padding: 9px 20px; transition: transform .12s ease; }
+  nav a.cta:hover { transform: translateY(-1px); }
 
-  .hero { padding: 84px 0 76px; }
-  .hero .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
-  .kicker { font-size: 12.5px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ember); margin-bottom: 20px; }
-  h1 { font-family: 'Fraunces', Georgia, serif; font-weight: 480; font-size: clamp(36px, 4.6vw, 56px); line-height: 1.07; letter-spacing: -0.015em; }
-  .hero p.lede { margin-top: 24px; font-size: 17.5px; color: var(--ink-soft); max-width: 50ch; }
-  .hero .actions { margin-top: 34px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero { padding: 58px 0 48px; }
+  .hero .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .kicker { font-size: 12.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ember); margin-bottom: 16px; }
+  h1 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: clamp(34px, 4.2vw, 52px); line-height: 1.06; letter-spacing: -0.015em; }
+  .hero p.lede { margin-top: 18px; font-size: 17px; color: var(--soft); max-width: 46ch; }
+  .hero .actions { margin-top: 26px; display: flex; gap: 12px; flex-wrap: wrap; }
   .btn { display: inline-block; text-decoration: none; font-weight: 600; font-size: 15px; border-radius: 999px; padding: 13px 26px; transition: transform .12s ease, box-shadow .12s ease; }
   .btn:hover { transform: translateY(-1px); }
-  .btn.primary { background: var(--ink); color: var(--cream); box-shadow: 0 8px 22px rgba(19,28,48,.18); }
-  .btn.ghost { color: var(--ink); border: 1.5px solid var(--line); background: var(--card); }
+  .btn.primary { background: var(--ink); color: var(--cream); box-shadow: 0 8px 22px rgba(19,28,48,.20); }
+  .btn.ghost { color: var(--ink); border: 1.5px solid #cfc6b6; background: var(--card); }
 
-  .mock { background: var(--card); border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 24px 60px rgba(19,28,48,.13); overflow: hidden; transform: rotate(1.2deg); }
-  .mock .bar { background: var(--ink); color: #eef1f8; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; }
+  /* composite weekly report mock: broad, any-business */
+  .mock { background: var(--card); border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 22px 55px rgba(19,28,48,.14); overflow: hidden; transform: rotate(1deg); }
+  .mock .bar { background: var(--ink); color: #eef1f8; padding: 12px 18px; display: flex; justify-content: space-between; align-items: baseline; }
   .mock .bar b { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 14.5px; }
-  .mock .bar span { font-size: 11.5px; color: #9aa7c4; }
-  .mock table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  .mock th { text-align: left; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); padding: 12px 20px 8px; border-bottom: 1px solid var(--line); }
-  .mock td { padding: 10px 20px; border-bottom: 1px solid #f2ede4; }
-  .mock td.score { font-weight: 600; }
-  .pill { display: inline-block; font-size: 11px; font-weight: 600; border-radius: 999px; padding: 2px 10px; }
-  .pill.hot { background: #e7f3ec; color: var(--good); }
-  .pill.cold { background: #fbe9e7; color: #b3402a; }
-  .mock .foot { padding: 12px 20px 16px; font-size: 11.5px; color: var(--ink-soft); }
+  .mock .bar span { font-size: 11px; color: #9aa7c4; }
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--line); }
+  .kpi { padding: 12px 10px 10px 14px; border-right: 1px solid #f0eadf; }
+  .kpi:last-child { border-right: none; }
+  .kpi b { display: block; font-size: 20px; font-family: 'Fraunces', Georgia, serif; font-weight: 600; letter-spacing: -0.01em; }
+  .kpi span { font-size: 10.5px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--soft); }
+  .kpi .up { color: var(--good); font-size: 11px; font-weight: 700; }
+  .kpi .dn { color: var(--bad); font-size: 11px; font-weight: 700; }
+  .flags { padding: 4px 0 2px; }
+  .flag { display: flex; gap: 10px; align-items: baseline; padding: 9px 18px; border-bottom: 1px solid #f4efe6; font-size: 13px; }
+  .flag:last-child { border-bottom: none; }
+  .flag .sev { flex: none; font-size: 10px; font-weight: 700; letter-spacing: .06em; border-radius: 4px; padding: 2px 7px; }
+  .sev.hi { background: #fbe7e2; color: var(--bad); }
+  .sev.ok { background: #e6f2ea; color: var(--good); }
+  .flag em { font-style: normal; font-weight: 700; }
+  .mock .foot { padding: 9px 18px 12px; font-size: 11px; color: var(--soft); background: #fbf9f5; }
 
-  .strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #f5f1e9; }
-  .strip .wrap { display: flex; gap: 40px; justify-content: space-between; padding: 22px 28px; flex-wrap: wrap; }
-  .strip b { font-family: 'Fraunces', Georgia, serif; font-size: 17px; font-weight: 600; display: block; }
-  .strip span { font-size: 13px; color: var(--ink-soft); }
+  .strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #f4f0e7; }
+  .strip .wrap { display: flex; gap: 30px; justify-content: space-between; padding: 18px 28px; flex-wrap: wrap; }
+  .strip b { font-family: 'Fraunces', Georgia, serif; font-size: 16.5px; font-weight: 600; display: block; }
+  .strip span { font-size: 13px; color: var(--soft); }
 
-  section.services { padding: 78px 0 30px; }
-  h2 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 30px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(235px, 1fr)); gap: 18px; }
-  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 28px 26px 30px; transition: transform .15s ease, box-shadow .15s ease; }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(19,28,48,.08); }
-  .glyph { width: 40px; height: 40px; border-radius: 10px; background: var(--ember-soft); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
-  .glyph svg { width: 20px; height: 20px; stroke: var(--ember); stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-  .card b { display: block; font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 19px; margin-bottom: 9px; letter-spacing: -0.01em; }
-  .card p { font-size: 14.5px; color: var(--ink-soft); }
-  .card .tag { display: inline-block; margin-top: 16px; font-size: 12.5px; font-weight: 600; color: var(--ember); }
+  section.services { padding: 54px 0 8px; }
+  h2 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--soft); margin-bottom: 8px; }
+  .range { color: var(--soft); font-size: 15.5px; margin-bottom: 22px; max-width: 62ch; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px 22px 20px; transition: transform .15s ease, box-shadow .15s ease; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(19,28,48,.09); }
+  .card .head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .glyph { flex: none; width: 36px; height: 36px; border-radius: 9px; background: var(--ember-soft); display: flex; align-items: center; justify-content: center; }
+  .glyph svg { width: 18px; height: 18px; stroke: var(--ember); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .card b.title { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 19px; letter-spacing: -0.01em; }
+  .card p { font-size: 14.5px; color: var(--ink); }
+  .chips { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { font-size: 12px; font-weight: 600; color: var(--soft); background: #f4f0e7; border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; }
 
-  .proof { margin: 72px 0; background: var(--ink); border-radius: 20px; color: #eef1f8; padding: 48px 50px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: center; }
-  .proof h2 { color: #9aa7c4; margin-bottom: 20px; }
-  .proof p.big { font-family: 'Fraunces', Georgia, serif; font-weight: 480; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.45; letter-spacing: -0.01em; }
+  .how { padding: 46px 0 10px; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .step { border-left: 3px solid var(--ember); background: var(--card); border-radius: 0 12px 12px 0; padding: 16px 18px; }
+  .step .n { font-family: 'Fraunces', Georgia, serif; font-weight: 700; color: var(--ember); font-size: 15px; }
+  .step b { display: block; font-size: 15.5px; margin: 2px 0 4px; }
+  .step p { font-size: 13.5px; color: var(--soft); }
+
+  .proof { margin: 46px 0; background: var(--ink); border-radius: 18px; color: #eef1f8; padding: 38px 42px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 36px; align-items: center; }
+  .proof h2 { color: #9aa7c4; margin-bottom: 14px; }
+  .proof p.big { font-family: 'Fraunces', Georgia, serif; font-weight: 480; font-size: clamp(19px, 2.2vw, 25px); line-height: 1.45; letter-spacing: -0.01em; }
   .proof p.big em { font-style: normal; color: #f0a875; }
-  .proof .how { border-left: 2px solid #2c3a58; padding-left: 22px; font-size: 14.5px; color: #b9c2d8; }
-  .proof .how b { color: #eef1f8; display: block; margin-bottom: 6px; font-size: 15px; }
+  .proof .how2 { border-left: 2px solid #2c3a58; padding-left: 20px; font-size: 14.5px; color: #c3cbde; }
+  .proof .how2 b { color: #eef1f8; display: block; margin-bottom: 5px; font-size: 15px; }
 
-  .contact { padding: 20px 0 96px; }
-  .contact .inner { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 44px 46px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-  .contact h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 480; font-size: clamp(24px, 3vw, 32px); letter-spacing: -0.01em; max-width: 22ch; }
-  .contact .sub { margin-top: 10px; color: var(--ink-soft); font-size: 15.5px; max-width: 46ch; }
+  .contact { padding: 6px 0 64px; }
+  .contact .inner { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 34px 38px; display: flex; align-items: center; justify-content: space-between; gap: 22px; flex-wrap: wrap; }
+  .contact h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: clamp(22px, 2.8vw, 30px); letter-spacing: -0.01em; max-width: 24ch; }
+  .contact .sub { margin-top: 8px; color: var(--soft); font-size: 15px; max-width: 48ch; }
 
-  footer { border-top: 1px solid var(--line); padding: 26px 0 42px; color: #98917f; font-size: 13px; }
+  footer { border-top: 1px solid var(--line); padding: 20px 0 34px; color: #8d8672; font-size: 13px; }
   footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 
-  @media (max-width: 860px) {
+  @media (max-width: 900px) {
     .hero .wrap, .proof { grid-template-columns: 1fr; }
-    .grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
     .mock { transform: none; }
+    .kpis { grid-template-columns: repeat(2, 1fr); }
+    .kpi { border-bottom: 1px solid #f0eadf; }
     nav .links a:not(.cta) { display: none; }
+    .hero { padding: 40px 0 36px; }
   }
 </style>
 </head>
@@ -97,8 +120,8 @@
   <div class="wrap">
     <div class="word">Steel Rule<span class="dot">.</span></div>
     <div class="links">
-      <a href="#services">Services</a>
-      <a href="#work">Work</a>
+      <a href="#work">Selected work</a>
+      <a href="#process">Process</a>
       <a class="cta" href="mailto:nickfisher518@gmail.com">Get in touch</a>
     </div>
   </div>
@@ -109,93 +132,113 @@
     <div>
       <div class="kicker">Steel Rule Studio</div>
       <h1>The numbers your business runs on, finally in one place.</h1>
-      <p class="lede">Steel Rule is an independent studio. We build the operational
-      systems small businesses actually run on: dashboards, automations, and
-      recurring intelligence reports, each one shaped around how you already work.
-      Measured once, measured right.</p>
+      <p class="lede">An independent studio building the systems small businesses
+      actually run on: dashboards, automations, and recurring reports, each one
+      shaped around how you already work. Measured once, measured right.</p>
       <div class="actions">
         <a class="btn primary" href="mailto:nickfisher518@gmail.com">Start a conversation</a>
-        <a class="btn ghost" href="#services">See the work</a>
+        <a class="btn ghost" href="#work">See the work</a>
       </div>
     </div>
     <div class="mock" aria-hidden="true">
-      <div class="bar"><b>VIP Engagement Report</b><span>September edition</span></div>
-      <table>
-        <tr><th>Reader</th><th>Opens / 30</th><th>Status</th></tr>
-        <tr><td>State Senate office A</td><td class="score">28</td><td><span class="pill hot">Engaged</span></td></tr>
-        <tr><td>Lobbying firm partner</td><td class="score">24</td><td><span class="pill hot">Engaged</span></td></tr>
-        <tr><td>Advertiser, agency B</td><td class="score">17</td><td><span class="pill hot">Engaged</span></td></tr>
-        <tr><td>Assembly office C</td><td class="score">0</td><td><span class="pill cold">Check spam</span></td></tr>
-      </table>
-      <div class="foot">Named VIP opens, engagement scores, and deliverability flags. Sample data shown.</div>
+      <div class="bar"><b>Weekly Operations Report</b><span>Monday 7:00 AM</span></div>
+      <div class="kpis">
+        <div class="kpi"><span>New applicants</span><b>14</b><i class="up">5 interviews set</i></div>
+        <div class="kpi"><span>Production waste</span><b>3.1%</b><i class="up">down from 7.4%</i></div>
+        <div class="kpi"><span>Billing disputes</span><b>$1,842</b><i class="dn">2 flagged</i></div>
+        <div class="kpi"><span>Quiet readers</span><b>3</b><i class="dn">of 214 VIPs</i></div>
+      </div>
+      <div class="flags">
+        <div class="flag"><span class="sev hi">FLAG</span><span>Vendor invoice <em>#2114</em> appears twice: <em>$612</em> to recover</span></div>
+        <div class="flag"><span class="sev hi">FLAG</span><span>Thursday overbake: <em>240 units</em> unsold, plan cut for next week</span></div>
+        <div class="flag"><span class="sev ok">DONE</span><span>6 stale applicants auto followed up, 2 replied</span></div>
+      </div>
+      <div class="foot">One page, every Monday, on your systems. Sample data shown.</div>
     </div>
   </div>
 </header>
 
 <div class="strip">
   <div class="wrap">
-    <div><b>Monthly cadence</b><span>Reports land the 1st, every month</span></div>
     <div><b>Built on your systems</b><span>No rip and replace, ever</span></div>
-    <div><b>One flat subscription</b><span>No hourly meters, no surprises</span></div>
+    <div><b>Flat monthly pricing</b><span>No hourly meters, no surprises</span></div>
+    <div><b>Proof before payment</b><span>See it on your real workflow first</span></div>
     <div><b>You approve everything</b><span>Nothing ships without your eyes</span></div>
   </div>
 </div>
 
-<section class="services" id="services">
+<section class="services" id="work">
   <div class="wrap">
     <h2>Selected work</h2>
-    <p style="margin:-18px 0 26px;color:var(--ink-soft);font-size:15.5px;max-width:62ch">
-    Every engagement is built custom for one business. These four show the range.</p>
+    <p class="range">Every engagement is built custom for one business. These show the range.</p>
     <div class="grid">
       <div class="card">
-        <div class="glyph"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8l2 2-4 4-2-2"/></svg></div>
-        <b>People operations</b>
-        <p>Recruiting pipelines end to end: every applicant's stage in one view,
-        advance or reject in a click, automatic outreach and follow up on the
-        job boards and systems the business already runs.</p>
-        <span class="tag">Hiring, onboarding, retention</span>
+        <div class="head">
+          <div class="glyph"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8l2 2-4 4-2-2"/></svg></div>
+          <b class="title">People operations</b>
+        </div>
+        <p>Every applicant, one screen: advance, reject, and follow up without
+        losing anyone.</p>
+        <div class="chips"><span class="chip">Hiring pipeline</span><span class="chip">Auto outreach</span><span class="chip">Onboarding</span></div>
       </div>
       <div class="card">
-        <div class="glyph"><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></div>
-        <b>Reconciliation and audit</b>
-        <p>Three, four, or more independent data sources cross referenced until
-        the story agrees: insurance and payroll reconciliation, timekeeping
-        verification, dispute flags with the dollars attached.</p>
-        <span class="tag">Find the money leaks</span>
+        <div class="head">
+          <div class="glyph"><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></div>
+          <b class="title">Reconciliation</b>
+        </div>
+        <p>Your records, cross checked against each other until the story agrees,
+        with the dollars attached.</p>
+        <div class="chips"><span class="chip">Insurance and payroll</span><span class="chip">Timekeeping</span><span class="chip">Dispute flags</span></div>
       </div>
       <div class="card">
-        <div class="glyph"><svg viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg></div>
-        <b>Inventory and production</b>
-        <p>Demand planned production sheets, live counts, reorder points, and
-        dead stock flags built from the business's own history, so cash stops
-        sitting on shelves or landing in the trash.</p>
-        <span class="tag">Make the right amount</span>
+        <div class="head">
+          <div class="glyph"><svg viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg></div>
+          <b class="title">Inventory and production</b>
+        </div>
+        <p>Make and stock the right amount, planned from your own history instead
+        of gut feel.</p>
+        <div class="chips"><span class="chip">Production sheets</span><span class="chip">Live counts</span><span class="chip">Reorder points</span></div>
       </div>
       <div class="card">
-        <div class="glyph"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg></div>
-        <b>Publisher intelligence</b>
-        <p>For email publishers: which named VIP readers open, who has gone
-        quiet, where deliverability is silently failing, and which stories
-        actually earn the click. Delivered on the first of the month.</p>
-        <span class="tag">Monthly subscription</span>
+        <div class="head">
+          <div class="glyph"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg></div>
+          <b class="title">Audience intelligence</b>
+        </div>
+        <p>Who actually reads what you send, who went quiet, and what earns
+        the click.</p>
+        <div class="chips"><span class="chip">Named engagement</span><span class="chip">Deliverability</span><span class="chip">Monthly report</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="wrap" id="work">
+<section class="how" id="process">
+  <div class="wrap">
+    <h2>How an engagement works</h2>
+    <div class="steps" style="margin-top:16px">
+      <div class="step"><span class="n">01</span><b>Tell us the job you dread</b>
+        <p>The weekly task that eats your time, or the number you can never quite trust.</p></div>
+      <div class="step"><span class="n">02</span><b>See it working first</b>
+        <p>We build the first cut on your real workflow and show it running before you pay anything.</p></div>
+      <div class="step"><span class="n">03</span><b>Flat monthly, keep or cancel</b>
+        <p>One subscription covers the system, the reports, and the changes as your business shifts.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
   <div class="proof">
     <div>
       <h2>In production today</h2>
       <p class="big">Our systems run <em>payroll, routing, and safety</em> for a
-      40 van delivery fleet, <em>daily perishables counting</em> across a multi store
-      bakery group, and <em>VIP readership intelligence</em> for political media
+      40 van delivery fleet, <em>daily production counting</em> across a multi
+      store bakery group, and <em>reader intelligence</em> for political media
       publishers.</p>
     </div>
-    <div class="how">
-      <b>How an engagement starts</b>
-      Tell us the job you dread every week. If it can be automated, we show you
-      exactly what that looks like, on your real workflow, before you pay anything.
+    <div class="how2">
+      <b>Why "Steel Rule"</b>
+      A steel rule is the machinist's exact measure: the tool you check
+      everything else against. That is the job here. Numbers you can build on.
     </div>
   </div>
 </div>
