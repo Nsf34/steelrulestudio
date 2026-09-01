@@ -6,47 +6,85 @@
 <meta name="robots" content="noindex, nofollow">
 <title>VIP Engagement Report | Steel Rule Studio</title>
 <style>
-  :root{--ink:#131c30;--soft:#4c576f;--cream:#faf7f2;--ember:#c2571d;--line:#e7e0d5}
+  :root{--ink:#131c30;--soft:#4c576f;--cream:#faf7f2;--ember:#c2571d;--line:#e7e0d5;--tick:#2c3a58}
   *{margin:0;padding:0;box-sizing:border-box}
   body{font-family:Georgia,serif;background:var(--cream);color:var(--ink)}
-  .wrap{max-width:680px;margin:0 auto;padding:7vh 5vw 10vh}
-  .mark{font-weight:bold;font-size:20px}
-  .mark span{color:var(--ember)}
-  .eyebrow{font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin:46px 0 10px}
-  h1{font-size:40px;line-height:1.15;margin-bottom:16px}
-  .lede{font-family:Arial,Helvetica,sans-serif;font-size:16.5px;line-height:1.65;color:var(--soft);margin-bottom:36px}
-  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:34px 34px;margin-bottom:22px}
-  h2{font-size:13px;font-family:Arial,Helvetica,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);margin-bottom:16px}
-  .card p, .card li{font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.65}
+
+  .lockup{background:#fff;border-bottom:1px solid var(--line)}
+  .lockup-inner{max-width:760px;margin:0 auto;padding:26px 5vw 22px;display:flex;align-items:center;justify-content:center;gap:26px;flex-wrap:wrap}
+  .lockup img{display:block;max-width:100%}
+  .lockup .sr{height:52px;width:auto}
+  .lockup .er{height:30px;width:auto}
+  .lockup .x{font-family:Georgia,serif;font-size:22px;color:var(--ember);font-weight:bold}
+  .ruler{height:10px;background:
+    repeating-linear-gradient(90deg, var(--tick) 0 2px, transparent 2px 34px) bottom/100% 10px no-repeat,
+    repeating-linear-gradient(90deg, transparent 0 100px, var(--ember) 100px 102px, transparent 102px 136px) bottom/100% 7px no-repeat;
+    border-bottom:2px solid var(--tick);background-color:#fff}
+
+  .wrap{max-width:760px;margin:0 auto;padding:6vh 5vw 9vh}
+  .eyebrow{font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);margin-bottom:12px}
+  .eyebrow b{color:var(--ember)}
+  h1{font-size:clamp(32px,6vw,46px);line-height:1.12;margin-bottom:16px}
+  .lede{font-family:Arial,Helvetica,sans-serif;font-size:17px;line-height:1.7;color:var(--soft);max-width:58ch;margin-bottom:34px}
+
+  .chips{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+  .chip{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 20px;flex:1 1 180px}
+  .chip b{display:block;font-size:26px}
+  .chip span{font-family:Arial,Helvetica,sans-serif;font-size:12.5px;color:var(--soft)}
+
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:32px 34px;margin-bottom:20px;border-top:3px solid var(--ink)}
+  h2{font-size:12.5px;font-family:Arial,Helvetica,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--soft);margin-bottom:18px}
+  .card li{font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.65}
   ul{list-style:none}
-  li{padding:12px 0 12px 32px;border-top:1px solid var(--line);position:relative}
-  li:first-child{border-top:none;padding-top:0}
-  li:first-child::before{top:7px}
-  li::before{content:"";position:absolute;left:2px;top:19px;width:14px;height:3px;background:var(--ember)}
-  .terms{display:flex;flex-wrap:wrap;gap:10px 26px}
-  .terms div{font-family:Arial,Helvetica,sans-serif;font-size:14.5px;line-height:1.5}
-  .terms b{font-family:Georgia,serif;font-size:22px;display:block}
-  .cta{display:inline-block;background:var(--ember);color:#fff;font-family:Arial,Helvetica,sans-serif;font-weight:bold;font-size:15.5px;text-decoration:none;padding:15px 30px;border-radius:999px;margin-top:6px}
+  li{padding:13px 0 13px 32px;border-top:1px solid #f2ede4;position:relative}
+  li:first-of-type{border-top:none;padding-top:0}
+  li::before{content:"";position:absolute;left:2px;top:20px;width:14px;height:3px;background:var(--ember)}
+  li:first-of-type::before{top:8px}
+  li b{font-family:Georgia,serif;font-size:16.5px}
+
+  .terms{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px 26px}
+  .terms div{font-family:Arial,Helvetica,sans-serif;font-size:13.5px;line-height:1.5;color:var(--soft)}
+  .terms b{font-family:Georgia,serif;font-size:24px;display:block;color:var(--ink);margin-bottom:2px}
+
+  .ctaband{background:var(--ink);border-radius:16px;padding:36px 34px;margin-top:8px;color:var(--cream)}
+  .ctaband h3{font-size:24px;margin-bottom:8px}
+  .ctaband p{font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#b9c0d0;margin-bottom:22px;max-width:52ch}
+  .cta{display:inline-block;background:var(--ember);color:#fff;font-family:Arial,Helvetica,sans-serif;font-weight:bold;font-size:15.5px;text-decoration:none;padding:15px 30px;border-radius:999px}
   .cta:hover{background:#a84917}
-  .under{font-family:Arial,Helvetica,sans-serif;font-size:12.5px;color:var(--soft);margin-top:12px}
-  .foot{font-family:Arial,Helvetica,sans-serif;font-size:13px;color:var(--soft);margin-top:40px}
+  .under{font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#8d97ad;margin-top:12px}
+
+  .foot{font-family:Arial,Helvetica,sans-serif;font-size:13.5px;color:var(--soft);margin-top:36px;line-height:1.8}
   .foot a{color:var(--ember);text-decoration:none}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="mark">Steel Rule<span>.</span></div>
 
-  <p class="eyebrow">Prepared for Empire Report</p>
+<div class="lockup">
+  <div class="lockup-inner">
+    <img class="sr" src="logo.png" alt="Steel Rule Studio">
+    <span class="x">&times;</span>
+    <img class="er" src="empire-logo.png" alt="Empire Report">
+  </div>
+</div>
+<div class="ruler"></div>
+
+<div class="wrap">
+  <p class="eyebrow">A Steel Rule Studio engagement &middot; <b>prepared for Empire Report</b></p>
   <h1>The VIP Engagement Report</h1>
-  <p class="lede">Who among your named VIP readers is actually opening, who has gone quiet, and who has gone completely dark. Built from your real send data, delivered the same way every month, so the signal is in the changes.</p>
+  <p class="lede">Who among your named VIP readers is actually opening, who has gone quiet, and who has gone completely dark. Built from your real send data, delivered in the same format every month, so the signal is in the changes.</p>
+
+  <div class="chips">
+    <div class="chip"><b>1,071</b><span>named VIP readers tracked, deduplicated</span></div>
+    <div class="chip"><b>30 days</b><span>trailing window, edition by edition</span></div>
+    <div class="chip"><b>The 1st</b><span>in your inbox every month, automatically</span></div>
+  </div>
 
   <div class="card">
     <h2>What arrives on the 1st</h2>
     <ul>
-      <li>Every named VIP reader, with opens across the trailing 30 day window, edition by edition.</li>
-      <li>Zeros deduplicated, so the list of truly silent VIPs is real, not an artifact of duplicate records.</li>
-      <li>The same workbook format every month. Compare any two months side by side and the story tells itself.</li>
+      <li><b>Every named VIP, every edition.</b> Opens across the trailing 30 day window for each reader you care about, laid out edition by edition.</li>
+      <li><b>Real zeros, not artifacts.</b> Duplicate records are merged first, so the list of truly silent VIPs is genuine and worth acting on.</li>
+      <li><b>The same workbook, every month.</b> Compare any two months side by side and the story tells itself.</li>
     </ul>
   </div>
 
@@ -55,15 +93,20 @@
     <div class="terms">
       <div><b>$200</b>per month, flat</div>
       <div><b>The 1st</b>report and charge, automatic</div>
-      <div><b>Card or bank</b>either works, receipt emailed</div>
+      <div><b>Card or bank</b>receipt emailed every time</div>
       <div><b>Cancel anytime</b>one reply is enough</div>
     </div>
   </div>
 
-  <a class="cta" href="https://buy.stripe.com/14AfZi9Ko4AQg3o6SJ5EY00">Set up payment, takes a minute</a>
-  <p class="under">Secure checkout by Stripe. Nothing is charged until you confirm.</p>
+  <div class="ctaband">
+    <h3>Payment setup takes a minute.</h3>
+    <p>One time, card or bank. It charges the $200 on the 1st automatically and emails a receipt. After that, neither of us thinks about billing again.</p>
+    <a class="cta" href="https://buy.stripe.com/14AfZi9Ko4AQg3o6SJ5EY00">Set up payment</a>
+    <p class="under">Secure checkout by Stripe. Nothing is charged until you confirm.</p>
+  </div>
 
   <p class="foot">Questions first? Write <a href="mailto:hello@steelrulestudio.com">hello@steelrulestudio.com</a>, call or text Nick at <a href="tel:+15183699956">(518) 369-9956</a>, or just reply to any report email.<br>Steel Rule Studio &middot; <a href="https://steelrulestudio.com">steelrulestudio.com</a></p>
 </div>
+
 </body>
 </html>
