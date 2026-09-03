@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Book a call | Steel Rule Studio</title>
+<style>
+  :root{--ink:#131c30;--soft:#4c576f;--cream:#faf7f2;--ember:#c2571d;--line:#e7e0d5;--good:#2f7d4f}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:Georgia,serif;background:var(--cream);color:var(--ink);padding:6vh 5vw 10vh}
+  .wrap{max-width:620px;margin:0 auto}
+  .mark{font-weight:bold;font-size:20px;margin-bottom:28px}
+  .mark span{color:var(--ember)}
+  h1{font-size:30px;margin-bottom:8px}
+  .lede{font-family:Arial,Helvetica,sans-serif;font-size:15.5px;line-height:1.6;color:var(--soft);margin-bottom:26px}
+  h2{font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);margin:22px 0 10px}
+  .slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+  .slot{background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 12px;font-family:Arial,Helvetica,sans-serif;font-size:13.5px;cursor:pointer;text-align:center}
+  .slot:hover{border-color:var(--ember)}
+  .slot.sel{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .day{font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:bold;color:var(--ink);margin:16px 0 6px}
+  input,textarea{width:100%;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:11px;border:1px solid var(--line);border-radius:10px;margin-bottom:10px}
+  button.go{background:var(--ember);color:#fff;border:none;border-radius:999px;padding:14px 30px;font-family:Arial,Helvetica,sans-serif;font-size:15.5px;font-weight:bold;cursor:pointer}
+  button.go:disabled{background:#d9c3b3;cursor:default}
+  .done{background:#e7f3ec;border:1px solid #c4dfd0;border-radius:14px;padding:24px;font-family:Arial,Helvetica,sans-serif;font-size:15.5px;line-height:1.6;color:var(--good);display:none}
+  .foot{font-family:Arial,Helvetica,sans-serif;font-size:12.5px;color:var(--soft);margin-top:30px}
+  .foot a{color:var(--ember);text-decoration:none}
+  #picker.hide{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mark">Steel Rule<span>.</span></div>
+  <div id="picker">
+    <h1>Grab a time with Nick</h1>
+    <p class="lede">Pick whatever works and I will confirm by email. These are quick 15 minute intro calls, no prep needed on your end.</p>
+    <h2>Pick a time (Eastern)</h2>
+    <div id="slots"></div>
+    <h2 style="margin-top:24px">Your details</h2>
+    <input id="b-name" placeholder="Your name">
+    <input id="b-email" type="email" placeholder="Your email">
+    <textarea id="b-note" rows="2" placeholder="Anything you want me to know (optional)"></textarea>
+    <button class="go" id="go" disabled onclick="book()">Pick a time above</button>
+  </div>
+  <div class="done" id="done"></div>
+  <p class="foot">Steel Rule Studio &middot; <a href="https://steelrulestudio.com">steelrulestudio.com</a> &middot; questions? <a href="mailto:hello@steelrulestudio.com">hello@steelrulestudio.com</a></p>
+</div>
+<script>
+  const HUB="https://hub.steelrulestudio.com/book";
+  let picked=null;
+  const times=["11:00 AM","2:00 PM","4:00 PM"];
+  const days=[]; const d=new Date(); let added=0;
+  while(days.length<8){ d.setDate(d.getDate()+1); const wd=d.getDay(); if(wd>=1&&wd<=5){ days.push(new Date(d)); } }
+  const slotsEl=document.getElementById("slots");
+  days.forEach(day=>{
+    const label=day.toLocaleDateString([], {weekday:"long", month:"short", day:"numeric"});
+    const h=document.createElement("div"); h.className="day"; h.textContent=label; slotsEl.appendChild(h);
+    const grid=document.createElement("div"); grid.className="slots";
+    times.forEach(t=>{
+      const el=document.createElement("div"); el.className="slot"; el.textContent=t;
+      const val=label+" at "+t;
+      el.onclick=()=>{ document.querySelectorAll(".slot.sel").forEach(s=>s.classList.remove("sel")); el.classList.add("sel"); picked=val; const g=document.getElementById("go"); g.disabled=false; g.textContent="Book "+t+" "+label.split(",")[0]; };
+      grid.appendChild(el);
+    });
+    slotsEl.appendChild(grid);
+  });
+  async function book(){
+    const name=document.getElementById("b-name").value.trim();
+    const email=document.getElementById("b-email").value.trim();
+    const note=document.getElementById("b-note").value.trim();
+    if(!picked){alert("Pick a time first");return;}
+    if(!name||!email){alert("Add your name and email");return;}
+    const g=document.getElementById("go"); g.disabled=true; g.textContent="Booking...";
+    try{
+      const r=await fetch(HUB,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name,email,slot:picked,note})});
+      if(!r.ok)throw new Error();
+      document.getElementById("picker").classList.add("hide");
+      const done=document.getElementById("done"); done.style.display="block";
+      done.innerHTML="<b>You are booked for "+picked+" Eastern.</b><br>Nick will send a calendar invite to "+email+" shortly. Talk soon.";
+    }catch(e){ g.disabled=false; g.textContent="Something went wrong, try again"; }
+  }
+</script>
+</body>
+</html>
