@@ -26,8 +26,12 @@
   <h1>Grab a time with Nick</h1>
   <p class="lede">Quick 15 minute intro call, no prep needed on your end. Pick whatever works below and you will get a calendar invite with a video link right away.</p>
   <div class="cal">
+    <!-- hide_event_type_details=1 suppresses Calendly's own header, which still
+         reads "30 Minute Meeting" and contradicted the "about fifteen minutes"
+         in every outreach email. The page copy above states the real length.
+         Rename the event in Calendly and this can come back on. -->
     <div class="calendly-inline-widget"
-         data-url="https://calendly.com/nsf34-cornell/30min?hide_gdpr_banner=1&primary_color=c2571d"></div>
+         data-url="https://calendly.com/nsf34-cornell/30min?hide_gdpr_banner=1&hide_event_type_details=1&primary_color=c2571d"></div>
   </div>
   <p class="foot">Steel Rule Studio &middot; <a href="https://steelrulestudio.com">steelrulestudio.com</a> &middot; questions? <a href="mailto:hello@steelrulestudio.com">hello@steelrulestudio.com</a></p>
 </div>
